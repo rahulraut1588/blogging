@@ -1,0 +1,38 @@
+<div class="main back-grad" *ngIf="!loggedIn">
+    <div class="container">
+        <div class="auth back-light-grey">
+            <div class="left-col"> 
+                <h1 class="color-blue font-50 font-lobster mt-30"><span class="color-white">Blog</span>Park</h1>
+                <div style="height: 50px"></div>
+                <p class="color-white font-40"> Blog Park Registration Form </p>
+                <p class="color-white"> This is a free responsive registration form made with Bootstrap. Download it on AZMIND, customize and use it as you like! </p>
+            </div>
+            <div class="right-col">
+                <form #loginform="ngForm" (submit)="loginSubmit(loginform.value)" *ngIf="formFlag">
+                    <p class="font-40 mt-30"> Sign In Now! </p>
+                    <p class="font-18"> Fill in the form below to access your content: </p>
+                    <hr style="border-color: #aaa; margin-bottom: 40px;" />
+                    <input type="email" ngModel placeholder="Email Address" name="email" (change)="logEmailKey($event)" />
+                    <input type="password" ngModel placeholder="Password" name="password" autocomplete="off" />
+                    <div class="text-center mt-30">
+                        <button type="submit" class="back-pink color-white" ng-disabled="buttonDisabled" > Login </button> &nbsp;
+                        <button type="button" class="back-blue color-white" (click)="changeFlag()"> Not A User </button>
+                    </div>
+                </form>
+                <form #regForm="ngForm" (submit)="regSubmit(regForm.value)" *ngIf="!formFlag">
+                    <p class="font-40"> Sign Up Now! </p>
+                    <p class="font-18"> Fill in the form below to get instant access: </p>
+                    <hr style="border-color: #aaa; margin-bottom: 40px;" />
+                    <input type="text" ngModel placeholder="Full Name" name="name" />
+                    <input type="email" ngModel placeholder="Email Addres" name="email" (change)="regEmailKey($event)" />
+                    <input type="password" ngModel placeholder="Password" name="password" autocomplete="off" />
+                    <input type="password" ngModel placeholder="Confirm Password" name="confirmPassword" autocomplete="off" />
+                    <div class="text-center mt-30">
+                        <button type="submit" class="back-pink color-white"> Register </button> &nbsp;
+                        <button type="button" class="back-blue color-white" (click)="changeFlag()"> Already A User </button>
+                    </div>
+                </form>
+            </div>                
+        </div>
+    </div>
+</div>

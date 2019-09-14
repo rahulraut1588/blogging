@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './common/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,19 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'public';
-  formFlag: boolean = false;
+  loggedIn = false;
 
-  changeFlag() {
-    this.formFlag = (this.formFlag) ? false : true;
-    console.log(this.formFlag);
+  constructor (public auth:AuthService) { 
+
   }
 
-  loginSubmit(loginData) {
-    console.log(loginData);
+  ngOnInit () {
+    // var mod = localStorage.getItem('name');
+    var userId = localStorage.getItem('userId');
+    console.log(userId);
+    if ( userId ) {
+      this.loggedIn = true;
+    }
   }
 
-  regSubmit(regData) {
-    console.log(regData);
-  }
 }
